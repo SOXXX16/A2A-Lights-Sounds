@@ -216,7 +216,7 @@ footer p, .back-top { margin: 0; color: #888; font-size: 9px; letter-spacing: .8
 @media (max-width: 760px) {
   .hero-content { width: 100%; min-width: 0; }
   .hero h1 { max-width: 100%; }
-  .hero-last-line { font-size: .70em; letter-spacing: -.075em; }
+  .hero-last-line { font-size: .90em; letter-spacing: -.09em; }
 }
 
 /* Keep the equalizer gently animated on touch devices as well. */
