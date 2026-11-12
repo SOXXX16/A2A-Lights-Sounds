@@ -48,11 +48,11 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--cyan); outline-
   display: flex; align-items: center; overflow: hidden; padding: 90px max(var(--gutter), calc((100vw - var(--content)) / 2));
   background: radial-gradient(ellipse at 78% 48%, #201226 0, transparent 43%), linear-gradient(110deg,#09090f 44%,#10101b);
 }
-.hero-content { position: relative; z-index: 3; width: min(100%, 640px); }
+.hero-content { position: relative; z-index: 3; width: min(100%, 760px); }
 .eyebrow, .section-kicker { margin: 0; color: var(--cyan); font-size: 10px; font-weight: 800; letter-spacing: 2.8px; }
 .eyebrow > span { display: inline-block; width: 24px; height: 2px; margin-right: 9px; vertical-align: middle; background: var(--red); }
-.hero h1 { margin: 24px 0; font: 800 clamp(42px, 6.1vw, 82px)/1.1 Orbitron, sans-serif; letter-spacing: -.055em; overflow-wrap: normal; word-break: normal; hyphens: none; text-wrap: balance; }
-.hero h1 em { color: var(--red); font-style: normal; }
+.hero h1 { margin: 24px 0; font: 800 clamp(28px, 5.3vw, 68px)/1.1 Orbitron, sans-serif; letter-spacing: -.055em; overflow-wrap: normal; word-break: normal; hyphens: none; }
+.hero h1 em { color: var(--red); font-style: normal; }\n.hero-last-line { display: block; white-space: nowrap; }
 .hero-description { max-width: 510px; margin: 0; color: #b7b7c4; font-size: clamp(14px, 1.2vw, 16px); line-height: 1.8; text-wrap: pretty; overflow-wrap: break-word; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 30px; }
 .button { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 20px; padding: 13px 19px; font-size: 10px; font-weight: 800; letter-spacing: 1px; transition: transform .2s, background .2s, border-color .2s; }
@@ -151,7 +151,7 @@ footer p, .back-top { margin: 0; color: #888; font-size: 9px; letter-spacing: .8
   .nav .nav-cta { margin-top: 8px; text-align: center; }
   .hero { min-height: 690px; min-height: min(760px,calc(100svh - var(--header-height))); padding-top: 70px; padding-bottom: 95px; align-items: flex-start; }
   .hero-content { width: min(100%,620px); }
-  .hero h1 { font-size: clamp(38px,8.5vw,62px); }
+  .hero h1 { font-size: clamp(28px,5.3vw,68px); }
   .hero-art { top: auto; bottom: 0; width: 100%; height: 48%; opacity: .4; }
   .stage-ring { width: min(65vw,310px); }
   .ring-b { width: min(49vw,230px); }
@@ -168,7 +168,7 @@ footer p, .back-top { margin: 0; color: #888; font-size: 9px; letter-spacing: .8
 @media (max-width: 520px) {
   :root { --gutter: 19px; }
   .hero { min-height: 660px; padding-top: 60px; }
-  .hero h1 { margin: 20px 0; font-size: clamp(35px,9.7vw,52px); letter-spacing: -.06em; }
+  .hero h1 { margin: 20px 0; font-size: clamp(28px,5.3vw,68px); letter-spacing: -.06em; }
   .hero-description { max-width: 430px; font-size: 13px; }
   .hero-actions { gap: 9px; }
   .button { min-height: 45px; padding: 12px 14px; gap: 12px; font-size: 9px; }
@@ -195,7 +195,7 @@ footer p, .back-top { margin: 0; color: #888; font-size: 9px; letter-spacing: .8
 @media (max-width: 360px) {
   :root { --gutter: 16px; }
   .hero { min-height: 650px; }
-  .hero h1 { font-size: 34px; }
+  .hero h1 { font-size: 28px; }
   .hero-actions { align-items: stretch; flex-direction: column; max-width: 235px; }
   .hero-actions .button { justify-content: space-between; }
   .service-grid { grid-template-columns: minmax(0,1fr); }
