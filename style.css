@@ -249,3 +249,72 @@ footer p, .back-top { margin: 0; color: #888; font-size: 9px; letter-spacing: .8
   transform-origin: center;
   transition: transform 70ms linear;
 }
+
+
+/* Circular audio spectrum surrounding the A2A logo. */
+.equalizer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  bottom: auto !important;
+  width: 0;
+  height: 0;
+  display: block;
+  gap: 0;
+  transform: translate(-50%, -45%);
+}
+.equalizer i {
+  position: absolute;
+  top: 0;
+  left: -2px;
+  width: 4px;
+  height: 26px;
+  margin: 0;
+  border-radius: 999px;
+  background: linear-gradient(to top, var(--cyan), var(--red));
+  animation: none !important;
+  transform-origin: center center;
+  transform: rotate(var(--angle)) translateY(-122px) scaleY(var(--level, .12));
+  transition: transform 65ms linear;
+}
+.equalizer i:nth-child(1) { --angle: 0deg; }
+.equalizer i:nth-child(2) { --angle: 11.25deg; }
+.equalizer i:nth-child(3) { --angle: 22.5deg; }
+.equalizer i:nth-child(4) { --angle: 33.75deg; }
+.equalizer i:nth-child(5) { --angle: 45deg; }
+.equalizer i:nth-child(6) { --angle: 56.25deg; }
+.equalizer i:nth-child(7) { --angle: 67.5deg; }
+.equalizer i:nth-child(8) { --angle: 78.75deg; }
+.equalizer i:nth-child(9) { --angle: 90deg; }
+.equalizer i:nth-child(10) { --angle: 101.25deg; }
+.equalizer i:nth-child(11) { --angle: 112.5deg; }
+.equalizer i:nth-child(12) { --angle: 123.75deg; }
+.equalizer i:nth-child(13) { --angle: 135deg; }
+.equalizer i:nth-child(14) { --angle: 146.25deg; }
+.equalizer i:nth-child(15) { --angle: 157.5deg; }
+.equalizer i:nth-child(16) { --angle: 168.75deg; }
+.equalizer i:nth-child(17) { --angle: 180deg; }
+.equalizer i:nth-child(18) { --angle: 191.25deg; }
+.equalizer i:nth-child(19) { --angle: 202.5deg; }
+.equalizer i:nth-child(20) { --angle: 213.75deg; }
+.equalizer i:nth-child(21) { --angle: 225deg; }
+.equalizer i:nth-child(22) { --angle: 236.25deg; }
+.equalizer i:nth-child(23) { --angle: 247.5deg; }
+.equalizer i:nth-child(24) { --angle: 258.75deg; }
+.equalizer i:nth-child(25) { --angle: 270deg; }
+.equalizer i:nth-child(26) { --angle: 281.25deg; }
+.equalizer i:nth-child(27) { --angle: 292.5deg; }
+.equalizer i:nth-child(28) { --angle: 303.75deg; }
+.equalizer i:nth-child(29) { --angle: 315deg; }
+.equalizer i:nth-child(30) { --angle: 326.25deg; }
+.equalizer i:nth-child(31) { --angle: 337.5deg; }
+.equalizer i:nth-child(32) { --angle: 348.75deg; }
+@media (max-width: 760px) {
+  .equalizer i {
+    height: 20px;
+    transform: rotate(var(--angle)) translateY(-88px) scaleY(var(--level, .12));
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .equalizer i { transition: none; }
+}
