@@ -436,3 +436,33 @@ footer p, .back-top { margin: 0; color: #888; font-size: 9px; letter-spacing: .8
       scaleY(var(--level, .22));
   }
 }
+
+
+/* Layer the radial spectrum behind the centered A2A logo. */
+.stage-ring { z-index: 0; }
+.equalizer {
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.equalizer i {
+  z-index: 1;
+  transform-origin: center center;
+  transform: rotate(var(--angle))
+    translateY(calc(-1 * (clamp(120px, 15vw, 190px) / 2 + 7px)))
+    scaleY(var(--level, .22));
+}
+.stage-core {
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+@media (max-width: 760px) {
+  .equalizer i {
+    transform: rotate(var(--angle))
+      translateY(calc(-1 * (clamp(112px, 30vw, 150px) / 2 + 6px)))
+      scaleY(var(--level, .22));
+  }
+}
