@@ -87,6 +87,7 @@
       musicButton.setAttribute("aria-label", playing ? "Pause A2A track" : "Play A2A track");
       musicButton.querySelector(".music-icon").textContent = playing ? "Ⅱ" : "▶";
       musicButton.classList.toggle("is-playing", playing);
+      document.querySelector(".equalizer")?.classList.toggle("is-playing", playing);
       musicStatus.textContent = playing ? "A2A track · Playing" : "A2A track · Paused";
     }
 
