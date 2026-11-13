@@ -409,3 +409,30 @@ footer p, .back-top { margin: 0; color: #888; font-size: 9px; letter-spacing: .8
       scaleY(var(--level, .22));
   }
 }
+
+
+/* Final logo-centered radial waveform: bars radiate outward from the logo edge. */
+.stage-ring,
+.stage-core {
+  transform: translate(-50%, -50%);
+}
+.equalizer {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.equalizer i {
+  height: 34px;
+  transform-origin: center bottom;
+  transform: rotate(var(--angle))
+    translateY(calc(-1 * (clamp(120px, 15vw, 190px) / 2 + 14px)))
+    scaleY(var(--level, .22));
+}
+@media (max-width: 760px) {
+  .equalizer i {
+    height: 27px;
+    transform: rotate(var(--angle))
+      translateY(calc(-1 * (clamp(112px, 30vw, 150px) / 2 + 12px)))
+      scaleY(var(--level, .22));
+  }
+}
