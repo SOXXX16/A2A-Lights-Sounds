@@ -239,3 +239,13 @@ footer p, .back-top { margin: 0; color: #888; font-size: 9px; letter-spacing: .8
 .music-volume input { width: 100%; accent-color: var(--red); cursor: pointer; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 @media (max-width: 420px) { .music-player { right: 12px; bottom: max(12px, env(safe-area-inset-bottom)); width: min(280px, calc(100vw - 24px)); } }
+
+
+/* The hero equalizer is driven by the actual A2A track audio analyser. */
+.equalizer i {
+  height: 100%;
+  animation: none !important;
+  transform: scaleY(.12);
+  transform-origin: center;
+  transition: transform 70ms linear;
+}
