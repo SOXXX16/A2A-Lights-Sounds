@@ -466,3 +466,61 @@ footer p, .back-top { margin: 0; color: #888; font-size: 9px; letter-spacing: .8
       scaleY(var(--level, .22));
   }
 }
+
+
+/* Restore the classic horizontal equalizer, now driven by the live A2A track. */
+.stage-ring { z-index: 0; }
+.stage-core {
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.equalizer {
+  position: absolute;
+  z-index: 3;
+  top: calc(50% + clamp(105px, 12vw, 135px));
+  left: 50%;
+  bottom: auto !important;
+  width: min(260px, 82%);
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(4px, .8vw, 8px);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.equalizer i {
+  position: static;
+  flex: 1 1 0;
+  width: 5px;
+  max-width: 9px;
+  height: 34px;
+  margin: 0;
+  border-radius: 999px;
+  background: linear-gradient(to top, var(--cyan), #ffffff 48%, var(--red));
+  box-shadow: 0 0 7px #39d9ff44;
+  transform: scaleY(var(--level, .12));
+  transform-origin: center;
+  transition: transform 65ms ease-out, filter 120ms ease;
+  animation: none !important;
+}
+.equalizer.is-playing i {
+  filter: drop-shadow(0 0 5px #39d9ff88);
+}
+.equalizer.is-playing i:nth-child(3n) {
+  background: linear-gradient(to top, var(--red), #ffffff 48%, var(--cyan));
+}
+@media (max-width: 760px) {
+  .equalizer {
+    top: calc(50% + 88px);
+    width: min(210px, 78%);
+    height: 48px;
+    gap: 4px;
+  }
+  .equalizer i { height: 29px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .equalizer i { transition: none; }
+}
