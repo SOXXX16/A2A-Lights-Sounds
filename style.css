@@ -384,3 +384,28 @@ footer p, .back-top { margin: 0; color: #888; font-size: 9px; letter-spacing: .8
 @media (prefers-reduced-motion: reduce) {
   .equalizer i { transition: none; }
 }
+
+
+/* Keep the circular spectrum centered on the A2A logo and just outside its edge. */
+.equalizer {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -45%);
+}
+.equalizer i {
+  transform: rotate(var(--angle))
+    translateY(calc(-1 * (clamp(120px, 15vw, 190px) / 2 + 22px)))
+    scaleY(var(--level, .22));
+}
+@media (max-width: 760px) {
+  .equalizer {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -45%);
+  }
+  .equalizer i {
+    transform: rotate(var(--angle))
+      translateY(calc(-1 * (clamp(112px, 30vw, 150px) / 2 + 17px)))
+      scaleY(var(--level, .22));
+  }
+}
