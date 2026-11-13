@@ -64,15 +64,23 @@
     sections.forEach((section) => observer.observe(section));
   }
 
-  // Play the uploaded A2A track from the repository root.
+  // Play the uploaded A2A track and drive the hero equalizer from its live audio.
   const musicButton = document.getElementById("musicToggle");
   const musicStatus = document.getElementById("musicStatus");
   const musicSlider = document.getElementById("musicVolume");
+  const equalizerBars = [...document.querySelectorAll(".equalizer i")];
+
   if (musicButton && musicStatus && musicSlider) {
     const audio = new Audio("a2atrack.mp3");
     audio.loop = true;
     audio.preload = "metadata";
     audio.volume = Number(musicSlider.value);
+
+    let audioContext = null;
+    let analyser = null;
+    let frequencyData = null;
+    let animationFrame = 0;
+    let sourceConnected = false;
 
     function setPlayingUI(playing) {
       musicButton.setAttribute("aria-pressed", String(playing));
@@ -82,29 +90,88 @@
       musicStatus.textContent = playing ? "A2A track · Playing" : "A2A track · Paused";
     }
 
+    function resetWave() {
+      equalizerBars.forEach((bar) => {
+        bar.style.transform = "scaleY(.12)";
+      });
+    }
+
+    function animateWave() {
+      if (!analyser || audio.paused) return;
+      analyser.getByteFrequencyData(frequencyData);
+      const binCount = frequencyData.length;
+
+      equalizerBars.forEach((bar, index) => {
+        const from = Math.floor(Math.pow(index / equalizerBars.length, 1.7) * binCount);
+        const to = Math.max(from + 1, Math.floor(Math.pow((index + 1) / equalizerBars.length, 1.7) * binCount));
+        let total = 0;
+        for (let bin = from; bin < Math.min(to, binCount); bin++) total += frequencyData[bin];
+        const level = total / Math.max(1, Math.min(to, binCount) - from) / 255;
+        const scale = .12 + level * 1.18;
+        bar.style.transform = "scaleY(" + scale.toFixed(3) + ")";
+      });
+
+      animationFrame = requestAnimationFrame(animateWave);
+    }
+
+    async function prepareAudioAnalysis() {
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      if (!AudioContextClass) return;
+      if (!audioContext) {
+        audioContext = new AudioContextClass();
+        analyser = audioContext.createAnalyser();
+        analyser.fftSize = 256;
+        analyser.smoothingTimeConstant = .78;
+        frequencyData = new Uint8Array(analyser.frequencyBinCount);
+        const source = audioContext.createMediaElementSource(audio);
+        source.connect(analyser);
+        analyser.connect(audioContext.destination);
+        sourceConnected = true;
+      }
+      if (audioContext.state === "suspended") await audioContext.resume();
+    }
+
     musicButton.addEventListener("click", async () => {
       if (!audio.paused) {
         audio.pause();
-        setPlayingUI(false);
         return;
       }
       try {
+        await prepareAudioAnalysis();
         await audio.play();
-        setPlayingUI(true);
       } catch (error) {
-        musicStatus.textContent = "Upload a2atrack.mp3 to the website repository";
+        musicStatus.textContent = "Tap Play to enable the A2A track";
         setPlayingUI(false);
       }
     });
 
-    audio.addEventListener("play", () => setPlayingUI(true));
-    audio.addEventListener("pause", () => setPlayingUI(false));
-    audio.addEventListener("error", () => {
-      musicStatus.textContent = "Track file not found · Add a2atrack.mp3";
+    audio.addEventListener("play", () => {
+      setPlayingUI(true);
+      cancelAnimationFrame(animationFrame);
+      animateWave();
+    });
+    audio.addEventListener("pause", () => {
       setPlayingUI(false);
+      cancelAnimationFrame(animationFrame);
+      resetWave();
+    });
+    audio.addEventListener("ended", () => {
+      setPlayingUI(false);
+      cancelAnimationFrame(animationFrame);
+      resetWave();
+    });
+    audio.addEventListener("error", () => {
+      musicStatus.textContent = "Track file not found · Check a2atrack.mp3";
+      setPlayingUI(false);
+      cancelAnimationFrame(animationFrame);
+      resetWave();
     });
     musicSlider.addEventListener("input", () => {
       audio.volume = Number(musicSlider.value);
     });
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden && !audio.paused) audio.pause();
+    });
+    resetWave();
   }
 })();
