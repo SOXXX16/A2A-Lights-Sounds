@@ -92,7 +92,7 @@
 
     function resetWave() {
       equalizerBars.forEach((bar) => {
-        bar.style.transform = "scaleY(.12)";
+        bar.style.setProperty("--level", ".12");
       });
     }
 
@@ -108,7 +108,7 @@
         for (let bin = from; bin < Math.min(to, binCount); bin++) total += frequencyData[bin];
         const level = total / Math.max(1, Math.min(to, binCount) - from) / 255;
         const scale = .12 + level * 1.18;
-        bar.style.transform = "scaleY(" + scale.toFixed(3) + ")";
+        bar.style.setProperty("--level", scale.toFixed(3));
       });
 
       animationFrame = requestAnimationFrame(animateWave);
