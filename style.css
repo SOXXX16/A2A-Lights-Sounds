@@ -251,7 +251,7 @@ footer p, .back-top { margin: 0; color: #888; font-size: 9px; letter-spacing: .8
 }
 
 
-/* Circular audio spectrum surrounding the A2A logo. */
+/* Dense 360-degree audio spectrum surrounding the A2A logo. */
 .equalizer {
   position: absolute;
   top: 50%;
@@ -262,57 +262,123 @@ footer p, .back-top { margin: 0; color: #888; font-size: 9px; letter-spacing: .8
   display: block;
   gap: 0;
   transform: translate(-50%, -45%);
+  pointer-events: none;
 }
 .equalizer i {
   position: absolute;
   top: 0;
-  left: -2px;
-  width: 4px;
-  height: 26px;
+  left: -1.5px;
+  width: 3px;
+  height: 38px;
   margin: 0;
   border-radius: 999px;
-  background: linear-gradient(to top, var(--cyan), var(--red));
+  background: linear-gradient(to top, var(--cyan) 0%, #ffffff 42%, var(--red) 100%);
+  box-shadow: 0 0 5px #39d9ff55, 0 0 7px #ff354b44;
   animation: none !important;
   transform-origin: center center;
-  transform: rotate(var(--angle)) translateY(-122px) scaleY(var(--level, .12));
-  transition: transform 65ms linear;
+  transform: rotate(var(--angle)) translateY(-128px) scaleY(var(--level, .22));
+  transition: transform 55ms linear;
 }
-.equalizer i:nth-child(1) { --angle: 0deg; }
-.equalizer i:nth-child(2) { --angle: 11.25deg; }
-.equalizer i:nth-child(3) { --angle: 22.5deg; }
-.equalizer i:nth-child(4) { --angle: 33.75deg; }
-.equalizer i:nth-child(5) { --angle: 45deg; }
-.equalizer i:nth-child(6) { --angle: 56.25deg; }
-.equalizer i:nth-child(7) { --angle: 67.5deg; }
-.equalizer i:nth-child(8) { --angle: 78.75deg; }
-.equalizer i:nth-child(9) { --angle: 90deg; }
-.equalizer i:nth-child(10) { --angle: 101.25deg; }
-.equalizer i:nth-child(11) { --angle: 112.5deg; }
-.equalizer i:nth-child(12) { --angle: 123.75deg; }
-.equalizer i:nth-child(13) { --angle: 135deg; }
-.equalizer i:nth-child(14) { --angle: 146.25deg; }
-.equalizer i:nth-child(15) { --angle: 157.5deg; }
-.equalizer i:nth-child(16) { --angle: 168.75deg; }
-.equalizer i:nth-child(17) { --angle: 180deg; }
-.equalizer i:nth-child(18) { --angle: 191.25deg; }
-.equalizer i:nth-child(19) { --angle: 202.5deg; }
-.equalizer i:nth-child(20) { --angle: 213.75deg; }
-.equalizer i:nth-child(21) { --angle: 225deg; }
-.equalizer i:nth-child(22) { --angle: 236.25deg; }
-.equalizer i:nth-child(23) { --angle: 247.5deg; }
-.equalizer i:nth-child(24) { --angle: 258.75deg; }
-.equalizer i:nth-child(25) { --angle: 270deg; }
-.equalizer i:nth-child(26) { --angle: 281.25deg; }
-.equalizer i:nth-child(27) { --angle: 292.5deg; }
-.equalizer i:nth-child(28) { --angle: 303.75deg; }
-.equalizer i:nth-child(29) { --angle: 315deg; }
-.equalizer i:nth-child(30) { --angle: 326.25deg; }
-.equalizer i:nth-child(31) { --angle: 337.5deg; }
-.equalizer i:nth-child(32) { --angle: 348.75deg; }
+.equalizer i:nth-child(1) { --angle: 0.000deg; }
+.equalizer i:nth-child(2) { --angle: 3.750deg; }
+.equalizer i:nth-child(3) { --angle: 7.500deg; }
+.equalizer i:nth-child(4) { --angle: 11.250deg; }
+.equalizer i:nth-child(5) { --angle: 15.000deg; }
+.equalizer i:nth-child(6) { --angle: 18.750deg; }
+.equalizer i:nth-child(7) { --angle: 22.500deg; }
+.equalizer i:nth-child(8) { --angle: 26.250deg; }
+.equalizer i:nth-child(9) { --angle: 30.000deg; }
+.equalizer i:nth-child(10) { --angle: 33.750deg; }
+.equalizer i:nth-child(11) { --angle: 37.500deg; }
+.equalizer i:nth-child(12) { --angle: 41.250deg; }
+.equalizer i:nth-child(13) { --angle: 45.000deg; }
+.equalizer i:nth-child(14) { --angle: 48.750deg; }
+.equalizer i:nth-child(15) { --angle: 52.500deg; }
+.equalizer i:nth-child(16) { --angle: 56.250deg; }
+.equalizer i:nth-child(17) { --angle: 60.000deg; }
+.equalizer i:nth-child(18) { --angle: 63.750deg; }
+.equalizer i:nth-child(19) { --angle: 67.500deg; }
+.equalizer i:nth-child(20) { --angle: 71.250deg; }
+.equalizer i:nth-child(21) { --angle: 75.000deg; }
+.equalizer i:nth-child(22) { --angle: 78.750deg; }
+.equalizer i:nth-child(23) { --angle: 82.500deg; }
+.equalizer i:nth-child(24) { --angle: 86.250deg; }
+.equalizer i:nth-child(25) { --angle: 90.000deg; }
+.equalizer i:nth-child(26) { --angle: 93.750deg; }
+.equalizer i:nth-child(27) { --angle: 97.500deg; }
+.equalizer i:nth-child(28) { --angle: 101.250deg; }
+.equalizer i:nth-child(29) { --angle: 105.000deg; }
+.equalizer i:nth-child(30) { --angle: 108.750deg; }
+.equalizer i:nth-child(31) { --angle: 112.500deg; }
+.equalizer i:nth-child(32) { --angle: 116.250deg; }
+.equalizer i:nth-child(33) { --angle: 120.000deg; }
+.equalizer i:nth-child(34) { --angle: 123.750deg; }
+.equalizer i:nth-child(35) { --angle: 127.500deg; }
+.equalizer i:nth-child(36) { --angle: 131.250deg; }
+.equalizer i:nth-child(37) { --angle: 135.000deg; }
+.equalizer i:nth-child(38) { --angle: 138.750deg; }
+.equalizer i:nth-child(39) { --angle: 142.500deg; }
+.equalizer i:nth-child(40) { --angle: 146.250deg; }
+.equalizer i:nth-child(41) { --angle: 150.000deg; }
+.equalizer i:nth-child(42) { --angle: 153.750deg; }
+.equalizer i:nth-child(43) { --angle: 157.500deg; }
+.equalizer i:nth-child(44) { --angle: 161.250deg; }
+.equalizer i:nth-child(45) { --angle: 165.000deg; }
+.equalizer i:nth-child(46) { --angle: 168.750deg; }
+.equalizer i:nth-child(47) { --angle: 172.500deg; }
+.equalizer i:nth-child(48) { --angle: 176.250deg; }
+.equalizer i:nth-child(49) { --angle: 180.000deg; }
+.equalizer i:nth-child(50) { --angle: 183.750deg; }
+.equalizer i:nth-child(51) { --angle: 187.500deg; }
+.equalizer i:nth-child(52) { --angle: 191.250deg; }
+.equalizer i:nth-child(53) { --angle: 195.000deg; }
+.equalizer i:nth-child(54) { --angle: 198.750deg; }
+.equalizer i:nth-child(55) { --angle: 202.500deg; }
+.equalizer i:nth-child(56) { --angle: 206.250deg; }
+.equalizer i:nth-child(57) { --angle: 210.000deg; }
+.equalizer i:nth-child(58) { --angle: 213.750deg; }
+.equalizer i:nth-child(59) { --angle: 217.500deg; }
+.equalizer i:nth-child(60) { --angle: 221.250deg; }
+.equalizer i:nth-child(61) { --angle: 225.000deg; }
+.equalizer i:nth-child(62) { --angle: 228.750deg; }
+.equalizer i:nth-child(63) { --angle: 232.500deg; }
+.equalizer i:nth-child(64) { --angle: 236.250deg; }
+.equalizer i:nth-child(65) { --angle: 240.000deg; }
+.equalizer i:nth-child(66) { --angle: 243.750deg; }
+.equalizer i:nth-child(67) { --angle: 247.500deg; }
+.equalizer i:nth-child(68) { --angle: 251.250deg; }
+.equalizer i:nth-child(69) { --angle: 255.000deg; }
+.equalizer i:nth-child(70) { --angle: 258.750deg; }
+.equalizer i:nth-child(71) { --angle: 262.500deg; }
+.equalizer i:nth-child(72) { --angle: 266.250deg; }
+.equalizer i:nth-child(73) { --angle: 270.000deg; }
+.equalizer i:nth-child(74) { --angle: 273.750deg; }
+.equalizer i:nth-child(75) { --angle: 277.500deg; }
+.equalizer i:nth-child(76) { --angle: 281.250deg; }
+.equalizer i:nth-child(77) { --angle: 285.000deg; }
+.equalizer i:nth-child(78) { --angle: 288.750deg; }
+.equalizer i:nth-child(79) { --angle: 292.500deg; }
+.equalizer i:nth-child(80) { --angle: 296.250deg; }
+.equalizer i:nth-child(81) { --angle: 300.000deg; }
+.equalizer i:nth-child(82) { --angle: 303.750deg; }
+.equalizer i:nth-child(83) { --angle: 307.500deg; }
+.equalizer i:nth-child(84) { --angle: 311.250deg; }
+.equalizer i:nth-child(85) { --angle: 315.000deg; }
+.equalizer i:nth-child(86) { --angle: 318.750deg; }
+.equalizer i:nth-child(87) { --angle: 322.500deg; }
+.equalizer i:nth-child(88) { --angle: 326.250deg; }
+.equalizer i:nth-child(89) { --angle: 330.000deg; }
+.equalizer i:nth-child(90) { --angle: 333.750deg; }
+.equalizer i:nth-child(91) { --angle: 337.500deg; }
+.equalizer i:nth-child(92) { --angle: 341.250deg; }
+.equalizer i:nth-child(93) { --angle: 345.000deg; }
+.equalizer i:nth-child(94) { --angle: 348.750deg; }
+.equalizer i:nth-child(95) { --angle: 352.500deg; }
+.equalizer i:nth-child(96) { --angle: 356.250deg; }
 @media (max-width: 760px) {
   .equalizer i {
-    height: 20px;
-    transform: rotate(var(--angle)) translateY(-88px) scaleY(var(--level, .12));
+    height: 30px;
+    transform: rotate(var(--angle)) translateY(-96px) scaleY(var(--level, .22));
   }
 }
 @media (prefers-reduced-motion: reduce) {
