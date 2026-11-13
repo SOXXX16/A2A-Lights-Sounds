@@ -102,12 +102,15 @@
       const binCount = frequencyData.length;
 
       equalizerBars.forEach((bar, index) => {
-        const from = Math.floor(Math.pow(index / equalizerBars.length, 1.7) * binCount);
-        const to = Math.max(from + 1, Math.floor(Math.pow((index + 1) / equalizerBars.length, 1.7) * binCount));
-        let total = 0;
-        for (let bin = from; bin < Math.min(to, binCount); bin++) total += frequencyData[bin];
-        const level = total / Math.max(1, Math.min(to, binCount) - from) / 255;
-        const scale = .12 + level * 1.18;
+        // Spread the bars across the full audible spectrum, with more detail in the bass.
+        const position = index / Math.max(1, equalizerBars.length - 1);
+        const center = Math.min(binCount - 1, Math.floor(Math.pow(position, 2.15) * (binCount - 1)));
+        const from = Math.max(0, center - 1);
+        const to = Math.min(binCount, center + 2);
+        let peak = 0;
+        for (let bin = from; bin < to; bin++) peak = Math.max(peak, frequencyData[bin]);
+        const level = Math.max(0, (peak - 7) / 248);
+        const scale = .22 + Math.pow(level, .82) * 1.85;
         bar.style.setProperty("--level", scale.toFixed(3));
       });
 
@@ -120,8 +123,8 @@
       if (!audioContext) {
         audioContext = new AudioContextClass();
         analyser = audioContext.createAnalyser();
-        analyser.fftSize = 256;
-        analyser.smoothingTimeConstant = .78;
+        analyser.fftSize = 512;
+        analyser.smoothingTimeConstant = .68;
         frequencyData = new Uint8Array(analyser.frequencyBinCount);
         const source = audioContext.createMediaElementSource(audio);
         source.connect(analyser);
